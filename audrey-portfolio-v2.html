@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audrey Rah, PhD - Electrical & Computer Engineering</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0f172a;
+            --secondary: #0ea5e9;
+            --accent: #06b6d4;
+            --light-bg: #f0f9ff;
+            --dark-bg: #0f172a;
+            --text-dark: #1e293b;
+            --text-light: #ffffff;
+            --border: #cbd5e1;
+            --pink: #ec407a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #f5f7ff 0%, #e8f4ff 50%, #f0f9ff 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--text-light);
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.25);
+            position: relative;
+            overflow: visible;
+            margin-bottom: 0;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: drift 20s linear infinite;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        header > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-content h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .header-content .degree {
+            font-size: 1.3em;
+            color: #0ea5e9;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .header-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            font-size: 0.95em;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-icon {
+            font-size: 1.2em;
+        }
+
+        /* Wavy Divider */
+        .wave-divider {
+            position: relative;
+            height: 120px;
+            background: transparent;
+            margin-bottom: 0;
+        }
+
+        .wave-divider svg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #0ea5e9;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* About Section */
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            animation: fadeInUp 0.8s ease-out;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h2 {
+            font-size: 2.2em;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 4px solid #0ea5e9;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .about-text {
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .expertise {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 5px solid #0ea5e9;
+        }
+
+        .expertise h3 {
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        .expertise-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .expertise-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: #1e293b;
+            font-size: 1.05em;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        .expertise-item::before {
+            content: '✓';
+            color: #0ea5e9;
+            font-weight: bold;
+            font-size: 1.3em;
+            min-width: 20px;
+        }
+
+        /* Publications/Journals Section */
+        .journals-section {
+            margin-top: 3rem;
+        }
+
+        .add-journal-form {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            color: var(--text-light);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1em;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--text-dark);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+
+        .btn-add {
+            background: #0ea5e9;
+            color: #ffffff;
+            flex: 1;
+        }
+
+        .btn-add:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(14, 165, 233, 0.4);
+            background: #0284c7;
+        }
+
+        .btn-clear {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-clear:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Journal Cards */
+        .journals-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .journal-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #0ea5e9;
+            transition: all 0.3s ease;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .journal-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(26, 58, 82, 0.15);
+        }
+
+        .journal-title {
+            font-size: 1.2em;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .journal-authors {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .journal-year {
+            display: inline-block;
+            background: #0ea5e9;
+            color: #ffffff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .journal-citation {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: #f0f9ff;
+            border-left: 3px solid #0ea5e9;
+            border-radius: 4px;
+        }
+
+        .journal-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-link, .btn-pdf, .btn-delete {
+            flex: 1;
+            padding: 0.6rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-link {
+            background: #0f172a;
+            color: var(--text-light);
+        }
+
+        .btn-link:hover {
+            background: #1e293b;
+            transform: scale(1.05);
+        }
+
+        .btn-pdf {
+            background: #06b6d4;
+            color: var(--text-light);
+        }
+
+        .btn-pdf:hover {
+            background: #0891b2;
+            transform: scale(1.05);
+        }
+
+        .btn-delete {
+            background: #e8e8e8;
+            color: var(--text-dark);
+            padding: 0.6rem 0.4rem;
+        }
+
+        .btn-delete:hover {
+            background: #d0d0d0;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 3em;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .empty-state p {
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--text-light);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+            border-top: 3px solid #0ea5e9;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            line-height: 1.8;
+        }
+
+        .footer-address {
+            font-size: 0.95em;
+            color: #cbd5e1;
+            margin: 1.5rem 0;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            margin: 1rem 0;
+        }
+
+        .footer-links a {
+            color: #0ea5e9;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2em;
+            }
+
+            .header-info {
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9em;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .journals-list {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .wave-divider {
+                height: 80px;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #0ea5e9;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0284c7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Audrey Rah</h1>
+            <div class="degree">Ph.D. Candidate</div>
+            <div class="header-info">
+                <div class="info-item">
+                    <span class="info-icon">🎓</span>
+                    <span>University of Houston</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">⚡</span>
+                    <span>Electrical & Computer Engineering</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">📍</span>
+                    <span>Houston, TX, USA</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Wavy Divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,40 Q300,80 600,40 T1200,40 L1200,120 L0,120 Z" fill="#ec407a"></path>
+            <path d="M0,50 Q300,90 600,50 T1200,50 L1200,120 L0,120 Z" fill="#f06292" opacity="0.8"></path>
+        </svg>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#research">Research Areas</a></li>
+            <li><a href="#journals">Publications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- About Section -->
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I am a dedicated Ph.D. candidate in the Department of Electrical and Computer Engineering at the University of Houston, focused on advancing research in emerging technologies and innovative solutions for real-world challenges.</p>
+                    <p style="margin-top: 1rem;">My research interests span multiple domains within electrical and computer engineering, with a particular emphasis on practical applications and interdisciplinary approaches to problem-solving.</p>
+                </div>
+                <div class="expertise">
+                    <h3>Research Focus</h3>
+                    <div class="expertise-list">
+                        <div class="expertise-item">AI & Machine Learning</div>
+                        <div class="expertise-item">Data Science & Data Architecture</div>
+                        <div class="expertise-item">Cybersecurity & IT Governance</div>
+                        <div class="expertise-item">Networking & Wireless Systems</div>
+                        <div class="expertise-item">FPGA & Embedded Systems</div>
+                        <div class="expertise-item">VR & Human Behavior Analytics</div>
+                        <div class="expertise-item">Software & Automation Systems</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="section">
+            <h2>Research Areas</h2>
+            <p style="font-size: 1.05em; line-height: 1.8; color: #333; margin-top: 1rem;">
+                My research encompasses various critical areas including artificial intelligence and machine learning applications, data science architectures, cybersecurity governance, wireless networking systems, FPGA design, virtual reality analytics, and software automation. I am particularly interested in the intersection of human-computer interaction, sensor-based applications, and emerging computational paradigms.
+            </p>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="journals" class="section journals-section">
+            <h2>Publications & Journals</h2>
+
+            <!-- Add New Journal Form -->
+            <div class="add-journal-form">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.3em;">Add New Publication</h3>
+                <form id="journalForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="title">Publication Title *</label>
+                            <input type="text" id="title" name="title" required placeholder="Enter publication title">
+                        </div>
+                        <div class="form-group">
+                            <label for="year">Year *</label>
+                            <input type="number" id="year" name="year" required placeholder="2024" min="1900" max="2100">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="authors">Authors/Contributors</label>
+                            <input type="text" id="authors" name="authors" placeholder="e.g., A. Rah, B. Smith, C. Johnson">
+                        </div>
+                        <div class="form-group">
+                            <label for="citation">Journal/Conference Name</label>
+                            <input type="text" id="citation" name="citation" placeholder="e.g., IEEE Conference 2024">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description/Abstract</label>
+                        <textarea id="description" name="description" placeholder="Brief description of the publication..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="paperLink">Paper Link (URL)</label>
+                            <input type="url" id="paperLink" name="paperLink" placeholder="https://example.com/paper">
+                        </div>
+                        <div class="form-group">
+                            <label for="pdfLink">PDF Link (URL)</label>
+                            <input type="url" id="pdfLink" name="pdfLink" placeholder="https://example.com/paper.pdf">
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn-add">➕ Add Publication</button>
+                        <button type="reset" class="btn-clear">Clear Form</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Journals List -->
+            <div id="journalsList" class="journals-list">
+                <div class="empty-state">
+                    <div class="empty-state-icon">📚</div>
+                    <p>No publications added yet. Start by adding your research papers and journals above!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2>Contact & Links</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
+                <div>
+                    <h3 style="color: #0f172a; margin-bottom: 1rem;">Email</h3>
+                    <p style="font-size: 1.1em;">
+                        <a href="mailto:audrey@audreyrah.com" style="color: #0ea5e9; text-decoration: none;">audrey@audreyrah.com</a>
+                    </p>
+                </div>
+                <div>
+                    <h3 style="color: #0f172a; margin-bottom: 1rem;">Website</h3>
+                    <p style="font-size: 1.1em;">
+                        <a href="https://audreyrah.com" target="_blank" style="color: #0ea5e9; text-decoration: none;">audreyrah.com</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p style="font-weight: 600; font-size: 1.1em;">&copy; 2024 Audrey Rah, Ph.D. Candidate</p>
+        <div class="footer-address">
+            <p>Department of Electrical and Computer Engineering</p>
+            <p>University of Houston</p>
+            <p>Houston, TX 77204, USA</p>
+        </div>
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#journals">Publications</a>
+            <a href="mailto:audrey@audreyrah.com">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        // Local Storage key
+        const STORAGE_KEY = 'audreyRahPublications';
+
+        // Initialize from localStorage
+        function initializePublications() {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            const publications = stored ? JSON.parse(stored) : [];
+            renderPublications(publications);
+        }
+
+        // Get all publications from localStorage
+        function getPublications() {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        // Save publications to localStorage
+        function savePublications(publications) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(publications));
+        }
+
+        // Render publications
+        function renderPublications(publications) {
+            const list = document.getElementById('journalsList');
+            
+            if (publications.length === 0) {
+                list.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📚</div>
+                        <p>No publications added yet. Start by adding your research papers and journals above!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            list.innerHTML = publications.map((pub, index) => `
+                <div class="journal-card">
+                    <div class="journal-title">${escapeHtml(pub.title)}</div>
+                    ${pub.authors ? `<div class="journal-authors">${escapeHtml(pub.authors)}</div>` : ''}
+                    <div class="journal-year">${pub.year}</div>
+                    ${pub.citation ? `<div class="journal-citation">${escapeHtml(pub.citation)}</div>` : ''}
+                    ${pub.description ? `<p style="font-size: 0.95em; color: #555; margin-bottom: 1rem;">${escapeHtml(pub.description)}</p>` : ''}
+                    <div class="journal-actions">
+                        ${pub.paperLink ? `<a href="${escapeHtml(pub.paperLink)}" target="_blank" class="btn-link">🔗 View</a>` : ''}
+                        ${pub.pdfLink ? `<a href="${escapeHtml(pub.pdfLink)}" target="_blank" class="btn-pdf">📄 PDF</a>` : ''}
+                        <button class="btn-delete" onclick="deletePublication(${index})">🗑️</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Delete publication
+        function deletePublication(index) {
+            if (confirm('Are you sure you want to delete this publication?')) {
+                const publications = getPublications();
+                publications.splice(index, 1);
+                savePublications(publications);
+                renderPublications(publications);
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('journalForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const publication = {
+                title: document.getElementById('title').value,
+                authors: document.getElementById('authors').value,
+                year: parseInt(document.getElementById('year').value),
+                citation: document.getElementById('citation').value,
+                description: document.getElementById('description').value,
+                paperLink: document.getElementById('paperLink').value,
+                pdfLink: document.getElementById('pdfLink').value,
+                dateAdded: new Date().toISOString()
+            };
+
+            const publications = getPublications();
+            publications.unshift(publication);
+            savePublications(publications);
+            renderPublications(publications);
+
+            this.reset();
+            alert('Publication added successfully!');
+        });
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', initializePublications);
+    </script>
+</body>
+</html>
